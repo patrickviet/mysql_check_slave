@@ -21,6 +21,7 @@ get '/health' do
   end
 
   sql = cnx.query('show slave status')
+  cnx.close
   if sql.num_rows != 1
     status 404
     return "MySQL ERR : No Show Slave to show"
